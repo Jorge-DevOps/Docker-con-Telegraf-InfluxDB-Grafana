@@ -28,6 +28,8 @@ In order to run this container you'll need docker installed.
 
 ## telegraf.conf
 
+Archivo donde se configura la conexion a un base de datos y que datos se enviaran a la base de datos 
+
 ```shell
 [[inputs.exec]]
 commands=[“iperf3 -c 192.168.0.59 –json”]
