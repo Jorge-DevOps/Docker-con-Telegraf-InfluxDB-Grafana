@@ -6,11 +6,15 @@
 [![Follow Appwrite on StackShare](https://img.shields.io/badge/follow%20on-stackshare-blue?style=flat-square)](https://stackshare.io/appwrite)
 ![Tux, the Linux mascot](https://user-images.githubusercontent.com/64506580/159311466-f720a877-6c76-403a-904d-134addbd6a86.png)
 
-Telegraf Docker image pre-configured for [Appwrite server](https://appwrite.io) installation. This container is only extending the official Telegraf docker image with Appwrite specific configuration settings, for a fresh installation of Telegraf use only [docker official image](https://hub.docker.com/_/telegraf).
+Within this project we will make use of docker-compose which will help us to orchestrate all the necessary images.
 
+We will use the official Docker images for 
+* [Grafana](https://hub.docker.com/r/grafana/grafana "Grafana").
+* [telegraf](https://hub.docker.com/_/telegraf "Grafana").
+* [influxdb](https://hub.docker.com/_/influxdb "Grafana").
 ## Getting Started
 
-These instructions will cover usage information to help your run Appwrite's Telegraf docker container.
+These instructions will cover usage information.
 
 ### Prerequisities
 
@@ -20,10 +24,43 @@ In order to run this container you'll need docker installed.
 * [OS X](https://docs.docker.com/mac/started/)
 * [Linux](https://docs.docker.com/linux/started/)
 
+### Configuration files
+
+## telegraf.conf
+
+```shell
+[[inputs.exec]]
+commands=[“iperf3 -c 192.168.0.59 –json”]
+interval = “2m”
+timeout = “240s”
+data_format = “json”
+json_query = “end”
+name_override = “IMSI=”
+
+##############################################################################
+# OUTPUT PLUGINS #
+###############################################################################
+# Configuration for sending metrics to InfluxDB
+[[outputs.influxdb]]
+ ## The full HTTP or UDP URL for your InfluxDB instance.
+  urls = [“http://127.0.0.1:8086”]
+
+ ## The target database for metrics; will be created as needed.
+ ## For UDP url endpoint database needs to be configured on server side.
+  database = “iperf”
+
+ ## HTTP Basic Auth
+  username = “<username>”
+  password = “password” 
+```
+
+
+### Usage
+
 ### Usage
 
 ```shell
-docker run appwrite/telegraf
+docker 
 ```
 
 ### Environment Variables
