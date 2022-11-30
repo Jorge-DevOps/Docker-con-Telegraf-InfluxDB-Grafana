@@ -28,7 +28,7 @@ In order to run this container you'll need docker installed.
 
 ## telegraf.conf
 
-Archivo donde se configura la conexion a un base de datos y que datos se enviaran a la base de datos 
+In this file where the connection to a database is configured and what data will be sent to the database.
 
 ```shell
 [[inputs.exec]]
@@ -58,16 +58,23 @@ name_override = “IMSI=”
 
 
 ### Usage
-
-### Usage
-
+execute
 ```shell
-docker 
+ git clone git@github.com:Jorge-DevOps/Docker-con-Telegraf-InfluxDB-Grafana.git with git Bash
+```
+Here you will find several files necessary for the deployment of the project, the file that interests us in this section is docker-compose.yaml.
+This file contains the confdigurations of the official Docker images.
+```shell
+cd Docker-con-Telegraf-InfluxDB-Grafana
+```
+To download the images and execute the containers we can do it in different ways, in my case I will use docker-compse.
+```shell
+
+docker-compose up -d
 ```
 
 ### Environment Variables
 
-This container supports all environment variables supplied by the official Telegraf Docker image.
 
 ### Build / Release
 
