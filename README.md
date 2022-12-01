@@ -4,7 +4,7 @@
 [![Build Status](https://img.shields.io/travis/com/appwrite/docker-telegraf?style=flat-square)](https://travis-ci.com/appwrite/docker-telegraf)
 [![Twitter Account](https://img.shields.io/twitter/follow/appwrite?color=00acee&label=twitter&style=flat-square)](https://twitter.com/appwrite)
 [![Follow Appwrite on StackShare](https://img.shields.io/badge/follow%20on-stackshare-blue?style=flat-square)](https://stackshare.io/appwrite)
-![Tux, the Linux mascot](https://user-images.githubusercontent.com/64506580/159311466-f720a877-6c76-403a-904d-134addbd6a86.png)
+![T](https://user-images.githubusercontent.com/64506580/159311466-f720a877-6c76-403a-904d-134addbd6a86.png)
 
 Within this project we will make use of docker-compose which will help us to orchestrate all the necessary images.
 
@@ -69,32 +69,16 @@ cd Docker-con-Telegraf-InfluxDB-Grafana
 ```
 To download the images and execute the containers we can do it in different ways, in my case I will use docker-compse.
 ```shell
-
 docker-compose up -d
 ```
+You should get the following output:
+#
+![T](https://i.ibb.co/WGQrBnB/Captura-de-pantalla-2022-11-30-185656.png)
 
-### Environment Variables
+### In this way he already has Grafana, Telegraf and influxdb contenders on top, por lo que ya deberia tener acceso a grafana por medio de http por el puerto 3000
+* http://127.0.0.1:3000/
 
 
-### Build / Release
-
-```
-docker build --tag appwrite/telegraf:1.2.0 .
-docker push appwrite/telegraf:1.2.0
-```
-
-Multi-arch build (experimental using [buildx](https://github.com/docker/buildx)):
-
-```
-docker buildx create --use
-docker buildx build --platform linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64 --tag appwrite/telegraf:1.2.0 --push .
-```
-
-## Find Us
-
-* [GitHub](https://github.com/appwrite)
-* [Discord](https://appwrite.io/discord)
-* [Twitter](https://twitter.com/appwrite)
 
 ## Copyright and license
 
