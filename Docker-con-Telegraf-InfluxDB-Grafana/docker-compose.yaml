@@ -1,0 +1,59 @@
+# docker-compose.yaml
+version: "3"
+services:
+  grafana:
+    image: grafana/grafana-enterprise
+    privileged: true
+    user: root
+    ports:
+      - 3000:3000
+    container_name: grafana
+    environment: 
+      - GF_AUTH_DISABLE
+      - LOGIN_FORM=true 
+      - GF_AUTH_ANONYMOUS_ENABLED=true 
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin 
+      - GF_SECURITY_ALLOW_EMBEDDING=true 
+    restart : unless-stopped 
+    volumes :
+       - ./grafana:/var/lib/grafana # chown -R 472:472 ./grafana 
+    networks:
+      - host
+  influxdb:
+    image: influxdb:2.5-alpine
+    environment:
+      INFLUXDB_DB: homeassistant
+    privileged: true
+    restart: always
+    user: root
+    ports:
+      - "8086:8086"
+    container_name: influxdb
+    volumes:
+      - ./influxdb:/var/lib/influxdb
+    networks:
+      - host
+
+  telegraf:
+    image: telegraf:1.18-alpine
+    privileged: true
+    restart: always
+    user: root
+    depends_on:
+      - influxdb
+    links:
+      - influxdb
+    ports:
+      - "8125:8125/udp"
+    networks:
+      - host
+    container_name: telegraf
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    environment:                            
+      INFLUXDB_URL: http://influxdb:8086 
+
+networks:
+  host:
+    driver: bridge
