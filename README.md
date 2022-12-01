@@ -1,4 +1,4 @@
-# Docker with Telegraf influxDB Grafana 
+# Telegraf - influxDB - Grafana using Docker 
 [![Discord](https://img.shields.io/discord/564160730845151244?label=discord&style=flat-square)](https://appwrite.io/discord)
 [![Docker Pulls](https://img.shields.io/docker/pulls/appwrite/telegraf?color=f02e65&style=flat-square)](https://hub.docker.com/r/appwrite/telegraf)
 [![Build Status](https://img.shields.io/travis/com/appwrite/docker-telegraf?style=flat-square)](https://travis-ci.com/appwrite/docker-telegraf)
@@ -6,29 +6,31 @@
 [![Follow Appwrite on StackShare](https://img.shields.io/badge/follow%20on-stackshare-blue?style=flat-square)](https://stackshare.io/appwrite)
 ![T](https://user-images.githubusercontent.com/64506580/159311466-f720a877-6c76-403a-904d-134addbd6a86.png)
 
-Within this project we will make use of docker-compose which will help us to orchestrate all the necessary images.
+In this project we will use docker and docker-compose which will help us to orchestrate all the necessary images.
 
-We will use the official Docker images for 
+We will use the official Docker images for different process
+
 * [Grafana](https://hub.docker.com/r/grafana/grafana "Grafana").
 * [telegraf](https://hub.docker.com/_/telegraf "Grafana").
 * [influxdb](https://hub.docker.com/_/influxdb "Grafana").
+
 ## Getting Started
 
-These instructions will cover usage information.
+Instructions will cover usage information.
 
 ### Prerequisities
 
-In order to run this container you'll need docker installed.
+In order to run this container you'll need to install docker based on your OS.
 
 * [Windows](https://docs.docker.com/windows/started)
-* [OS X](https://docs.docker.com/mac/started/)
+* [MacOS](https://docs.docker.com/mac/started/)
 * [Linux](https://docs.docker.com/linux/started/)
 
 ### Configuration files
 
 ## telegraf.conf
 
-In this file where the connection to a database is configured and what data will be sent to the database.
+In this file we are gping to connect to a database. This database is going to persist the information of the connections and multiple process generated.
 
 ```shell
 [[inputs.exec]]
@@ -58,31 +60,34 @@ name_override = “IMSI=”
 
 
 ### Usage
-execute
+
+Execute in your CLI
+
 ```shell
  git clone git@github.com:Jorge-DevOps/Docker-con-Telegraf-InfluxDB-Grafana.git with git Bash
 ```
+
 Here you will find several files necessary for the deployment of the project, the file that interests us in this section is docker-compose.yaml.
+
 This file contains the confdigurations of the official Docker images.
+
 ```shell
 cd Docker-con-Telegraf-InfluxDB-Grafana
 ```
-To download the images and execute the containers we can do it in different ways, in my case I will use docker-compse.
+
+To download the images and execute the containers we can do it in different ways, in my case I will use docker-compose.
+
 ```shell
 docker-compose up -d
 ```
+
 You should get the following output:
-#
+
 ![T](https://i.ibb.co/WGQrBnB/Captura-de-pantalla-2022-11-30-185656.png)
 
-### In this way he already has Grafana, Telegraf and influxdb contenders on top, so you should already have access to grafana via http on port 3000.
+### At this point we already has Grafana, Telegraf and influxdb contenders on top, so, you already have access to grafana via localhost on port :3000.
+
 * http://127.0.0.1:3000/
 
 * You can also check the status of the containers with the command docker ps
 ![T](https://i.ibb.co/ZBwGTFm/dgh.png)
-
-
-
-## Copyright and license
-
-The MIT License (MIT) [http://www.opensource.org/licenses/mit-license.php](http://www.opensource.org/licenses/mit-license.php)
