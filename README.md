@@ -78,6 +78,9 @@ You should get the following output:
 ### In this way he already has Grafana, Telegraf and influxdb contenders on top, por lo que ya deberia tener acceso a grafana por medio de http por el puerto 3000
 * http://127.0.0.1:3000/
 
+* You can also check the status of the containers with the command docker ps
+![T](https://i.ibb.co/ZBwGTFm/dgh.png)
+
 
 
 ## Copyright and license
