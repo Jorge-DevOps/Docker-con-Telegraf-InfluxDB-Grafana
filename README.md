@@ -91,3 +91,6 @@ You should get the following output:
 
 * You can also check the status of the containers with the command docker ps
 ![T](https://i.ibb.co/ZBwGTFm/dgh.png)
+
+![image](https://user-images.githubusercontent.com/81051210/205131371-70ed3f31-a315-419c-a961-ce33002b6abb.png)
+
