@@ -1,0 +1,17 @@
+FROM python:3.9.17
+
+RUN apt-get update && apt-get install -y gcc libcairo2-dev libjpeg-dev libpango1.0-dev libgdk-pixbuf2.0-dev libffi-dev zlib1g-dev vim
+
+# Crea una capa separada para instalar las dependencias del sistema.
+RUN python -m pip install --upgrade pip
+
+# Crea una capa separada para instalar las dependencias de Python.
+COPY chatbot/requirements.txt /tmp/requirements.txt
+RUN pip install -r /tmp/requirements.txt
+
+WORKDIR /
+COPY chatbot ./
+RUN pip install -r /requirements.txt
+EXPOSE 4000
+
+CMD [ "python", "run.py" ]

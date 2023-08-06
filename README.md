@@ -75,7 +75,7 @@ You should get the following output:
 #
 ![T](https://i.ibb.co/WGQrBnB/Captura-de-pantalla-2022-11-30-185656.png)
 
-### In this way he already has Grafana, Telegraf and influxdb contenders on top, por lo que ya deberia tener acceso a grafana por medio de http por el puerto 3000
+### In this way he already has Grafana, Telegraf and influxdb contenders on top, so you should already have access to grafana via http on port 3000.
 * http://127.0.0.1:3000/
 
 * You can also check the status of the containers with the command docker ps
